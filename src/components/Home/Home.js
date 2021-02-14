@@ -13,6 +13,7 @@ function Home() {
         />
         <div className="home__row">
           <Product
+           id="1234830"
             title="The lean startup"
             price={29.99}
             image={

@@ -8,10 +8,9 @@
   padding: 20px;
 }
 
-.checkoutProduct__info > button {
+.checkoutProduct__info .actions-container > button {
   background: #f0c14b;
   border: 1px solid;
-  margin-top: 10px;
   border-color: #a88734 #846a29;
   color: #111;
 }
@@ -29,4 +28,16 @@
 .checkoutProduct__title {
   font-size: 17px;
   font-weight: 800;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+}
+.item-quantity select {
+  background-color: #f0f2f2;
+  padding: 3px;
+  box-shadow: 0px 2px 5px 0px rgba(15, 17, 17, 0.15);
+  border-radius: 4px;
+  margin-right: 10px;
 }
