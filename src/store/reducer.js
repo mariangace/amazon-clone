@@ -6,14 +6,26 @@ export const initialState = {
 export const getBasketTotal = (basket) => 
   basket?.reduce((amount, item) => (item.quantity*item.price) + amount, 0);
 
+const addQuantity = (basket, id, quantity) => {
+  basket.forEach(product => {
+    if(product.id === id){ product.quantity = quantity }
+  })
+  return basket;
+}
+
 //state of the app
 const reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_QUANTITY":
+      return {
+        ...state,
+        basket: addQuantity(state.basket, action.id, action.quantity),
+      };
     case "ADD_TO_BASKET":
       return {
         ...state,
-        basket: [...state.basket, action.item],
-      };
+      basket: [...state.basket, action.item],
+    };
     case "REMOVE_FROM_BASKET":
       const index = state.basket.findIndex(
         (basketItem) => basketItem.id === action.id

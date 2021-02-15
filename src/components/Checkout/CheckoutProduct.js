@@ -5,26 +5,12 @@ import './CheckoutProduct.css';
 function CheckoutProduct({image, id, title, price, rating}) {
     const [{basket}, dispatch] = useStateValue();
 
-    console.log(basket);
     const addQuantityToBasket = (e) => {
-        //dispatch the item into the data layer
-        console.log(e.target.value);
-        //first remove element then add it with the specific quantity
+        const quantity = parseInt(e.target.value)
         dispatch({
-            type: 'REMOVE_FROM_BASKET',
-            id:id,
-
-        })
-        dispatch({
-          type: "ADD_TO_BASKET",
-          item: {
-            id: id,
-            title: title,
-            image: image,
-            price: price,
-            rating: rating,
-            quantity: parseInt(e.target.value)
-          },
+          type: "ADD_QUANTITY",
+          id: id,
+          quantity: quantity
         });
       };
 
@@ -49,7 +35,7 @@ function CheckoutProduct({image, id, title, price, rating}) {
                     {Array(rating)
                     .fill()
                     .map((_,i)=> (
-                        <p>★</p>
+                        <p key={i}>★</p>
                     ))}
                 </div>
                 <div className="actions-container">

@@ -5,7 +5,19 @@ import { useStateValue } from "../../StateProvider";
 import { getBasketTotal } from "../../store/reducer";
 
 function Subtotal() {
+
   const [{ basket }] = useStateValue();
+
+  const calculateProductQuantity = () => {
+    if(basket.length > 0){
+      let quantity = 0;
+      for(let product of basket){
+        quantity+=product.quantity;
+      }
+      return quantity;
+    }
+    return 0;
+  };
 
   return (
     <div className="subtotal">
@@ -14,7 +26,7 @@ function Subtotal() {
           <>
             <p>
               {/* Subtotal ({ShoppingBasket.length} items): */}
-              Subtotal ({basket.length} items):
+              Subtotal ({calculateProductQuantity()} items):
               <strong>{`${value}`}</strong>
             </p>
             <small className="subtotal__gift">
