@@ -4,7 +4,7 @@ import './CheckoutProduct.css';
 
 function CheckoutProduct({image, id, title, price, rating}) {
     const [{basket}, dispatch] = useStateValue();
-
+    console.log(basket);
     const addQuantityToBasket = (e) => {
         const quantity = parseInt(e.target.value)
         dispatch({
